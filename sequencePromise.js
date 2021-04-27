@@ -1,3 +1,19 @@
+/**
+ *
+ * @param {Array} arr array of functions which return a promise
+ * @param {Boolean} stopOnReject should the function stop on the fist rejection
+ *
+ * # Example
+ * ```
+ * const arr = [
+ *  ()=> new Promise((resolve, reject)=> {setTimeout(()=> { resolve(1) }, 3000)}),
+ *  ()=> new Promise((resolve, reject)=> {setTimeout(()=> { resolve(2) }, 1000)})
+ * ];
+ * 
+ * await queuePromises(arr, true); //{ rejected: [], resolved:[1,2]}
+ * ```
+ */
+
 function queuePromises(arr, stopOnReject) {
     let resolved= [];
     let rejected= [];
