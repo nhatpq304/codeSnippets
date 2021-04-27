@@ -7,12 +7,12 @@
  * ```
  * const obj = { a: { b: 1, c: {d: 3}}}
  * 
- * getObjectKey(obj, 'c' ); // { b: 1, c: {d: 3}}
- * getObjectKey(obj, 'd' ); // {d: 3}
+ * getObjectWithKey(obj, 'c' ); // { b: 1, c: {d: 3}}
+ * getObjectWithKey(obj, 'd' ); // {d: 3}
  * ```
  */
 
-function getObjectKey(obj, findingKey){
+function getObjectWithKey(obj, findingKey){
     return Object.keys(obj).reduce((res,key)=> {
         const el = obj[key];
 	    if(res){
@@ -23,7 +23,7 @@ function getObjectKey(obj, findingKey){
             	return el;
             }
 
-            return getObjectKey(el, findingKey);
+            return getObjectWithKey(el, findingKey);
         }
         return res;
     }, null);
