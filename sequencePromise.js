@@ -5,10 +5,8 @@
  *
  * # Example
  * ```
- * const arr = [
- *  ()=> new Promise((resolve, reject)=> {setTimeout(()=> { resolve(1) }, 3000)}),
- *  ()=> new Promise((resolve, reject)=> {setTimeout(()=> { resolve(2) }, 1000)})
- * ];
+ * const value = [1,2,3,4];
+ * const arr = value.map(el=> ()=> new Promise((resolve)=> {setTimeout(()=> { console.log(el); resolve(el) }, el*1000)}))
  * 
  * await queuePromises(arr, true); //{ rejected: [], resolved:[1,2]}
  * ```
