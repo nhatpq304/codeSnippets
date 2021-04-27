@@ -8,11 +8,11 @@
  * const value = [1,2,3,4];
  * const arr = value.map(el=> ()=> new Promise((resolve)=> {setTimeout(()=> { console.log(el); resolve(el) }, el*1000)}))
  * 
- * await queuePromises(arr, true); //{ rejected: [], resolved:[1,2]}
+ * await sequencePromises(arr, true); //{ rejected: [], resolved:[1,2,3,4]}
  * ```
  */
 
-function queuePromises(arr, stopOnReject) {
+function sequencePromises(arr, stopOnReject) {
     let resolved= [];
     let rejected= [];
     const next = async (prm)=>{
